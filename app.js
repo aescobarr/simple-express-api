@@ -6,6 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var sumRouter = require('./routes/sum');
+var indexRouter = require('./routes/index');
 
 var app = express();
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
+app.use('/', indexRouter);
 app.use('/sum', sumRouter);
 
 // catch 404 and forward to error handler
